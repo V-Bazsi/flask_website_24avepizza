@@ -1,0 +1,125 @@
+{% extends "layout-admin.html" %} {% block body %}
+<!-- Made By: 24avepizza
+This is see menu admin table
+-->
+
+<!-- ==The Header Section== -->
+<section class="bg-7 h-500x main-slider pos-relative">
+    <div class="triangle-up pos-bottom"></div>
+    <div class="container h-100">
+        <div class="dplay-tbl">
+            <div class="dplay-tbl-cell center-text color-white pt-90">
+                <h5><b>Welcome you are logged in</b></h5>
+                <h3 class="mt-30 mb-15">Edit Menu</h3>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==Ends== -->
+
+<!-- ==Styles== -->
+<style>
+    #menuid {
+        overflow: auto;
+    }
+    
+    @media only screen and (max-width:1000px) {
+        .navbar-nav {
+            flex-direction: row;
+            -ms-flex-direction: row;
+        }
+        div.row {
+            align-self: center !important;
+            text-align: center !important;
+        }
+        div#navid {
+            overflow: auto !important;
+        }
+        hr.hr {
+            display: block !important;
+        }
+        div#tableFormat {
+            float: none !important;
+        }
+    }
+</style>
+<!-- ==Ends== -->
+
+
+<!-- ==The main body== -->
+<section class="story-area left-text center-sm-text pos-relative ">
+
+    <div class="abs-tbl bg-2 w-20 z--1 dplay-md-none"></div>
+    <div class="abs-tbr bg-3 w-20 z--1 dplay-md-none"></div>
+
+    <!-- ==Add menu form-->
+    <div class="container">
+        <div class="d-inline-block">
+            <h3 class="d-inline-block">Add menu <i class='bx bxs-food-menu'></i></h3>
+            <a onclick="enterAddMenu(0)"><button class="btn-primaryc plr-25" >Add Menu <i class='bx bxs-food-menu'></i></button></a>
+        </div>
+
+        <hr class="hr d-none" />
+
+        <div class="text-center float-right d-inline-block" id="tableFormat" onclick="enterTableMenuAdmin()">
+            <a title="Click Here to view menu in table format">
+                <h3>Table Format <i class='bx bx-table'></i></h3>
+            </a>
+        </div>
+    </div>
+    <!-- ===Ends== -->
+
+    <hr/>
+
+    <div id="menuid">
+        <!-- ==Showing the menu== -->
+        <div class="container" id="navid">
+
+
+            <nav class="navbar float-left" id="navid">
+                <ul class="selecton brdr-b-primary mb-70 navbar-nav" id="ulid">
+                    {% for menu2 in menu2 %}
+                    <li class="nav-item" id="li"><a class="{{menu2.active}}" href="#" data-select="{{menu2.part}}"><b>{{menu2.partname}}</b></a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+
+        <div class="container">
+
+            <!--row-->
+
+            <div class="row center-text">
+                {% for menu in menu %} {% set fname = 'images/' + menu.img_file %}
+
+                <div class="col-md-6 food-menu {{menu.part}}">
+
+                    <div class="sided-90x mb-30 ">
+                        <div class="s-left"><img class="br-3" src="{{ url_for('static',filename=fname) }}" alt="Menu Image"></div>
+
+                        <!--s-left-->
+
+                        <div class="s-right">
+                            <h5 class="mb-10"><b>{{menu.name}}</b><b class="color-primary float-right"><i class='{{menu.pricesym}}'></i>{{menu.price}}  &nbsp<i class='{{menu.price1sym}}'></i>{{menu.price1}}</b></h5>
+                            <p class="pr-70">{{menu.body}}</p>
+                            <p class="pr-70"><b id="size">{{menu.size1}} </b>&nbsp <i class='{{menu.pricesym}}'></i>{{menu.price}}</p>
+                            <p class="pr-70"><b id="size">{{menu.size2}} </b>&nbsp <i class='{{menu.price1sym}}'></i>{{menu.price1}}</p>
+                        </div><br/>
+
+                        <a onclick="enterAddMenu('{{menu.id}}')"><button class="btn-primaryc plr-25" >Edit <i class='bx bxs-edit-alt'></i></button></a>
+
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- container -->
+        </div>
+        <!-- ==Ends== -->
+    </div>
+
+</section>
+<!-- ==Ends== -->
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "layout-admin.html" %} {% block body %}
+<!-- Made By 24avepizza
+This is to  mail user of contact us section of dashboard
+-->
+
+<!-- ==The Header Section== -->
+<section class="bg-6 h-500x main-slider pos-relative">
+
+    <div class="triangle-up pos-bottom"></div>
+    <div class="container h-100">
+
+        <div class="dplay-tbl">
+
+            <div class="dplay-tbl-cell center-text color-white pt-90">
+                <h5><b>View Contact Us</b></h5>
+                <h3 class="mt-30 mb-15">Admin Panel</h3>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- ==Ends== -->
+
+
+<div class="container">
+    <br/> {% for contact in contact %}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a onclick="enterAdminContactUs()" style="color:#00bfff;">Contact Us-Admin</a></li>
+            <li class="breadcrumb-item active" aria-current="page">View {{contact.id}}</li>
+        </ol>
+    </nav>
+
+    <br/>
+    <div class="form-row">
+
+        <div class="form-group col-md-6">
+            <label><b>Name</b></label>
+            <input type="text" readonly class="form-control-plaintext" placeholder="{{contact.name}}">
+        </div>
+
+        <div class="form-group col-md-6">
+            <label><b>Email</b></label>
+            <input type="email" readonly class="form-control-plaintext" placeholder="{{contact.email}}">
+        </div>
+
+    </div>
+
+    <hr/>
+
+    <div class="form-group">
+        <label><b>Subject</b></label>
+        <input type="text" readonly class="form-control-plaintext" placeholder="{{contact.subject}}">
+    </div>
+
+    <hr/>
+
+    <div class="form-group">
+        <label><b>Message</b></label>
+        <textarea type="text" readonly class="form-control-plaintext">{{contact.msg}}</textarea>
+    </div>
+
+
+    <div class="form-row">
+
+        <div class="form-group col-md-2">
+            <label><b>ID</b></label>
+            <input type="number" readonly class="form-control-plaintext" placeholder="{{contact.id}}">
+        </div>
+
+        <div class="form-group col-md-2">
+            <label><b>Date and Time</b></label>
+            <input type="text" readonly class="form-control-plaintext" placeholder="{{contact.dt_time}}">
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+<br/> {% endblock %}

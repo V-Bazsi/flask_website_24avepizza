@@ -1,0 +1,228 @@
+{% extends "layout-admin.html" %} {% block body %}
+<!-- Made By: 24avepizza
+This is edit/add menu
+-->
+
+
+
+<!-- ==The Header Section== -->
+<section class="bg-5 h-500x main-slider pos-relative">
+    <div class="triangle-up pos-bottom"></div>
+    <div class="container h-100">
+        <div class="dplay-tbl">
+            <div class="dplay-tbl-cell center-text color-white pt-90">
+                <h5><b>THE BEST IN TOWN</b></h5>
+                <h2 class="mt-30 mb-15">{{title}}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==Ends== -->
+
+
+<!-- ==Main body== -->
+<section class="story-area left-text center-sm-text pos-relative">
+
+    <!-- ==Flashed message== -->
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{message}}
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <!-- ==Ends== -->
+
+
+
+    <div class="abs-tbl bg-2 w-20 z--1 dplay-md-none"></div>
+    <div class="abs-tbr bg-3 w-20 z--1 dplay-md-none"></div>
+
+
+    <div class="container">
+        <h3>Basic Actions</h3>
+        <a onclick="enterEditMenu()"><button class="btn-primaryc plr-25">Goto Edit Menu Table</button></a>
+
+        <hr/>
+
+        <!-- ==Add/edit menu form== -->
+        <form action="/add-menu/{{id}}" method="post">
+
+            <div class="form-row">
+
+                <!-- ==Name== -->
+                <div class="form-group col-md-6">
+                    <label>Name of the Dish <i class='bx bx-dish' ></i></label>
+                    <input id="name" class="form-control" placeholder="Name of the Dish" name="name" value="{{menu.name}}" autofocus max="250" required>
+                </div>
+                <!-- ==End== -->
+
+
+                <div class="form-group col-md-6">
+
+                    <!-- ==Dish Category== -->
+                    <label>Dish Category</label>
+                    <select id="editable-select" class="form-control" name="partname" autofocus required placeholder="{{menu.partname}}">  
+                        {% for i in menu_partname %}
+                        <option>{{i|join(',')}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <!-- ==Ends== -->
+
+            <!-- ==Description of Dish== -->
+            <div class="form-group">
+                <label>Description of Dish</label>
+                <input type="text" id="body" class="form-control" placeholder="Description of Dish" name="body" value="{{menu.body}}" autofocus max="250">
+            </div>
+            <!-- ==Ends== -->
+
+
+            <div class="form-row">
+
+                <!-- ==Dish image file name== -->
+                <div class="form-group col-md-3">
+                    <label>Dish Image File Name <i class='bx bx-image' ></i></label>
+                    <input type="text" name="img_file" id="img_file" value="{{menu.img_file}}" class="form-control" required/>
+                    <strong><a href="/view-photo/{{menu.img_file}}" target="_blank"><large class="form-text text-muted">Click here to view photo:( {{menu.img_file}} )</large></a></strong>
+                </div>
+                <!-- ==Ends== -->
+
+            </div>
+
+
+
+            <div class="form-row">
+
+                <!-- ==Dishname small== -->
+                <div class="form-group col-md-2">
+                    <label>Name of Small size</label>
+                    <input type="text" id="size1" class="form-control" placeholder="Name of Small size" name="size1" value="{{menu.size1}}" autofocus>
+                </div>
+                <!-- ==Ends== -->
+
+                <!-- ==Price of dish small== -->
+                <div class="form-group col-md-3">
+                    <label>Price of the Dish of Small size</label>
+                    <input type="number" id="price" class="form-control" placeholder="Price of the Dish of Small size" name="price" value="{{menu.price}}" autofocus>
+                </div>
+                <!-- ==Ends== -->
+            </div>
+
+
+            <div class="form-row">
+
+                <!-- ==Name of the large size== -->
+                <div class="form-group col-md-2">
+                    <label>Name of Large size</label>
+                    <input type="text" id="size2" class="form-control" placeholder="Name of Large size" name="size2" value="{{menu.size2}}" autofocus>
+                </div>
+                <!-- ==Ends== -->
+
+                <!-- ==Price of the large dish== -->
+                <div class="form-group col-md-3">
+                    <label>Price of the Dish of Large size</label>
+                    <input type="number" id="price1" class="form-control" placeholder="Price of the Dish of Small size" name="price1" value="{{menu.price1}}" autofocus>
+                </div>
+                <!-- ==Ends== -->
+            </div>
+
+
+            <div class="form-row">
+
+                <!-- ==Best Seller option== -->
+                <div class="form-group col-md-2 checkbox">
+                    <label>Dish Bestseller?</label>
+                    <input type="checkbox" value="YES" name="best">
+                    <large class="form-text text-muted">The option selected is: <strong>{{menu.best}}</strong></large>
+                </div>
+
+            </div>
+            <!-- ==Ends== -->
+
+            <br/>
+            <div class="form-row">
+
+                <!-- ==Name of the large size== -->
+                <div class="form-group col-md-3">
+                    <label>To be displayed in Home page</label>
+                    <input type="checkbox" value="YES" name="indexin">
+                    <large class="form-text text-muted">The option selected is: <strong>{{menu.indexin}}</strong></large>
+                </div>
+                <!-- ==Ends== -->
+
+                <!-- ==Price of the large dish== -->
+                <div class="form-group col-md-3">
+                    <label>To be displayed in Menu Tab</label>&nbsp;
+                    <input type="checkbox" value="YES" name="menuin" checked>
+                    <large class="form-text text-muted">The option selected is: <strong>{{menu.menuin}}</strong></large>
+                </div>
+                <!-- ==Ends== -->
+            </div>
+
+            <br/>
+            <div class="form-row">
+                <!-- ==Availability== -->
+                <div class="form-group col-md-3">
+                    <label>Available?</label>&nbsp;
+                    <input type="checkbox" value="YES" name="availability" checked>
+                    <large class="form-text text-muted">The option selected is: <strong>{{menu.menuin}}</strong></large>
+                </div>
+                <!-- ==Ends== -->
+            </div>
+
+            <br/>
+            <!-- ==Check Box== -->
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                    <label class="form-check-label" for="gridCheck">Check me out</label>
+                </div>
+            </div>
+            <!-- ==End== -->
+
+
+            <!-- ==Submit button== -->
+            <button type="submit" class="btn-primaryc plr-25">Save</button>
+            <!-- ==Ends== -->
+        </form>
+        <!-- ==Ends== -->
+
+
+        <hr/>
+
+
+        <!-- ==Uploader== -->
+        <form method="post" action="/upload/images" enctype="multipart/form-data" class="form-inline" id="uploader">
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class='bx bxs-cloud-upload'></i></div>
+                    </div>
+                    <input type="file" name="img_file" class="form-control" id="inlineFormInputGroupUsername">
+                    <input style="display: none;" name="path" value="/add-menu/{{id}}">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2"><i class='bx bx-image-add' ></i></button>
+        </form>
+
+        <large class="form-text text-muted">The Image Size should be <strong>120x120</strong></large>
+        <!-- ==Ends== -->
+
+
+        <hr/>
+
+        <!-- ==Delete menu== -->
+        <a onclick="enterDeleteMenu('{{id}}','/edit-menu')"><button class="btn-primaryc plr-25" >Delete Menu <i class='bx bx-minus'></i><i class='bx bxs-food-menu' ></i></button></a>
+        <!-- ==Ends== -->
+
+    </div>
+</section>
+
+
+<script>
+    $('#editable-select').editableSelect({
+        effects: 'slide'
+    });
+</script>
+
+{% endblock %}

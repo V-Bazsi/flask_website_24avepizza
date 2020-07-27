@@ -1,0 +1,75 @@
+{% extends "layout.html" %} {% block body %}
+<!-- Made By: 24avepizza
+This is offers
+-->
+
+<!-- ==The Header Section== -->
+<section class="bg-7 h-500x main-slider pos-relative">
+    <div class="triangle-up pos-bottom"></div>
+    <div class="container h-100">
+        <div class="dplay-tbl">
+            <div class="dplay-tbl-cell center-text color-white pt-90">
+                <h5><b>24 Ave Pizza</b></h5>
+                <h3 class="mt-30 mb-15">Offers Available</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ==The main body== -->
+<section class="story-area left-text center-sm-text">
+
+    <div class="container">
+
+        <div class="row justify-content-center align-items-center">
+
+            <div class="col-md-7 col-lg-8">
+                {% for offers in offers %} {% set fname = 'images/' + offers.img_file %}
+
+                <a onclick="enterOffersInside('{{offers.slug}}')">
+                    <div class="mb-50 mb-sm-30">
+                        <div class="pos-relative mb-30 pt-15">
+
+                            <!-- ===The date== -->
+                            <div class="font-8 abs-tl p-20 bg-primary color-white">
+                                <b>{{offers.date}}</b> /
+                                <b>{{offers.month}}</b> /
+                                <b>{{offers.year}}</b>
+                                <div class="brdr-style-1"></div>
+                            </div>
+                            <!-- ===Ends== -->
+
+                            <!-- ==The offers image== -->
+                            <div class="ïmg-999x mlr-auto"><img class="rounded thumbnail img-responsive col-md-12 row" src="{{ url_for('static', filename=fname) }}" alt=""></div>
+                            <!-- ==Ends== -->
+
+
+                        </div>
+
+                        <h4><b>{{offers.title}}</b></h4>
+                        <h6 class="mt-10 bg-lite-blue dplay-inl-block">
+                            <a class="plr-20 mtb-10" href="#"><b>By Admin</b></a>
+                        </h6>
+                        <p class="mt-30">Offer Valid till: {{offers.date}}/{{offers.month}}/{{offers.year}}</p>
+                        <p class="mt-30">{{offers.body[0:143]}}....</p>
+                        <br/>
+                        <hr/>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <!-- ==The previous and next buttons== -->
+        <a href="{{prev}}" class="float-left"><button class="btn btn-primaryc plr-25 btn-block" type="submit"><i class='bx bx-skip-previous' style="font-size: 30px;" ></i></button></a>
+        <a href="{{next}}" class="float-right"><button class="btn btn-primaryc plr-25 btn-block" type="submit"><i class='bx bx-skip-next' style="font-size: 30px;"></i></button></a>
+        <!-- ===Ends== -->
+
+    </div>
+
+
+</section>
+<!-- ==Ends== -->
+<hr/> {% endblock %}

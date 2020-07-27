@@ -1,0 +1,77 @@
+{% set fname = 'images/' + params['logo_pic'] %}
+<!Doctype HTML>
+<html lang="en">
+
+<!--
+    Made by: 24AvePizza
+    Login form
+-->
+
+
+<!-- ==Head tag== -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{url_for('static',filename=fname) }}">
+
+    <title>Welcome to ADMIN Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<!-- ==Ends== -->
+
+
+<body class="text-center">
+
+    <link href="{{url_for('static', filename='css/signin.css')}}" rel="stylesheet">
+
+    <!-- ==Login Forms== -->
+    <form class="form-signin" action="/dashboard" method="post">
+        <img class="mb-4" src="{{url_for('static',filename=fname) }}" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Admin Login</h1>
+
+
+        <!-- ==Flashed Message==-->
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show">
+            {{message}}
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
+        <!-- ===Ends== -->
+
+
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="username" required autofocus>
+
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+
+        <div class="checkbox mb-3">
+            <a href="/forgot">Forgot Password?</a>
+        </div>
+
+
+        <div class="checkbox mb-3">
+        </div>
+
+        <!-- ==Submit button== -->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Admin Login</button>
+        <p class="mt-5 mb-3 text-muted">©
+
+            <!-- ==The script Tag== -->
+            <script>
+                document.write(new Date().getFullYear());
+            </script>&nbsp 24 Ave Pizza</p>
+        <!-- ==Ends== -->
+
+    </form>
+    <!-- ==Ends== -->
+
+</body>
+
+</html>

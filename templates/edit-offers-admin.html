@@ -1,0 +1,136 @@
+{% extends "layout-admin.html" %} {% block body %}
+
+<!--
+    Made by: 24Avepizza
+   Edit/Add Offers page
+-->
+
+
+<!-- ==Header Section== -->
+<section class="bg-7 h-500x main-slider pos-relative">
+
+    <div class="triangle-up pos-bottom"></div>
+
+    <div class="container h-100">
+        <div class="dplay-tbl">
+            <div class="dplay-tbl-cell center-text color-white pt-90">
+                <h5><b>Welcome you are logged in</b></h5>
+                <h3 class="mt-30 mb-15">Add / Edit a offer</h3>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- ==Ends== -->
+
+
+<!-- ==The main body== -->
+<section class="story-area left-text center-sm-text pos-relative">
+
+    <!-- ==The flashed messages== -->
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{message}}
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <!-- ==Ends== -->
+
+
+    <div class="abs-tbl bg-2 w-20 z--1 dplay-md-none"></div>
+    <div class="abs-tbr bg-3 w-20 z--1 dplay-md-none"></div>
+
+
+    <div class="container">
+
+        <!-- ==Edit Offers form== -->
+        <form action="/edit/{{id}}" method="post">
+
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label>Title</label>
+                    <input id="title" class="form-control" placeholder="Title" name="title" value="{{offers.title}}" autofocus required>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>End-Point</label>
+                    <input type="text" id="slug" class="form-control" placeholder="End-Point" name="slug" value="{{offers.slug}}" autofocus required>
+                    <small class="form-text text-muted">Keep this unique</small>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <label>Body</label>
+                <textarea type="text" id="body" class="form-control" placeholder="Body" name="body" autofocus required>{{offers.body}}</textarea>
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label>Image File</label>
+                    <input type="text" name="img_file" id="img_file" value="{{offers.img_file}}" class="form-control" required/>
+                    <a href="/view-photo/{{offers.img_file}}" target="_blank"><small class="form-text text-muted">Click here to view photo:( {{offers.img_file}} )</small></a>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label>Date</label>
+                    <input id="date" class="form-control" name="date" placeholder="Date" value="{{offers.date}}" minlength="2" maxlength="2" required>
+                    <small class="form-text text-muted">Offer valid till: {{offers.date}}/{{offers.month}}/{{offers.year}}</small>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label>Month</label>
+                    <input id="month" class="form-control" placeholder="Month" name="month" minlength="2" maxlength="2" value="{{offers.month}}" required>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label>Year</label>
+                    <input id="year" class="form-control" placeholder="Year" name="year" value="{{offers.year}}" minlength="4" maxlength="4" required>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                    <label class="form-check-label" for="gridCheck">Check me out</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primaryc plr-25">{{title}}</button>
+
+        </form>
+        <!-- ==Ends== -->
+
+
+        <hr/>
+
+
+        <!-- ==Uploader== -->
+        <form method="post" action="/upload/images" enctype="multipart/form-data" class="form-inline" id="uploader">
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class='bx bxs-cloud-upload'></i></div>
+                    </div>
+                    <input type="file" name="img_file" class="form-control" id="inlineFormInputGroupUsername">
+                    <input style="display: none;" name="path" value="/edit/{{10}}">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2"><i class='bx bx-image-add' ></i></button>
+        </form>
+
+        <large class="form-text text-muted">The Image Size should be <strong>1000x400</strong></large>
+        <!-- ==Ends== -->
+    </div>
+
+
+</section>
+<!-- ==Ends= -->
+
+{% endblock %}

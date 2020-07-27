@@ -1,0 +1,88 @@
+{% extends "layout-admin.html" %} {% block body %}
+
+<!--
+    Made by: 24Avepizza
+    View Offers page //Dashboard
+-->
+
+<!-- ==Header Section== -->
+<section class="bg-7 h-500x main-slider pos-relative">
+    <div class="triangle-up pos-bottom"></div>
+    <div class="container h-100">
+        <div class="dplay-tbl">
+            <div class="dplay-tbl-cell center-text color-white pt-90">
+                <h5><b>Welcome you are logged in</b></h5>
+                <h3 class="mt-30 mb-15">Admin Panel</h3>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==Ends== -->
+
+
+<!-- ==The Main bODY== -->
+<section class="story-area left-text center-sm-text pos-relative">
+
+
+    <div class="abs-tbl bg-2 w-20 z--1 dplay-md-none"></div>
+    <div class="abs-tbr bg-3 w-20 z--1 dplay-md-none"></div>
+
+
+    <!-- ==Flashed Messages== -->
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{message}}
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <!-- ==Ends== -->
+
+
+    <div class="container">
+
+        <h3>Add a new offer</h3>
+        <a onclick="enterEditOffers(0)"><button class="btn-primaryc plr-25"><i class='bx bx-plus bx-tada' style="font-size: 20px;" undefined ></i>&nbsp<i class='bx bxs-offer bx-tada' style="font-size: 20px;"></i></button></a>&nbsp&nbsp
+
+        <hr/>
+
+
+        <h3 class="center-sm-text pos-relative"><b>Edit offers here</b></h3>
+
+
+        <hr/>
+
+
+        <!-- ==Edit offers table== -->
+        <table class="table table-responsive">
+
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>End-Point</th>
+                    <th><i class='bx bxs-edit bx-tada' style=' font-size:30px;'></i></th>
+                    <th><i class='bx bxs-minus-circle bx-tada' style=' font-size:30px;'></i></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for offers in offers %}
+                <tr>
+                    <td>{{offers.title}}</td>
+                    <td>{{offers.date}}/{{offers.month}}/{{offers.year}}</td>
+                    <td>{{offers.slug}}</td>
+                    <td><a onclick="enterEditOffers('{{offers.id}}')"><button class="btn-primaryc plr-25"><i class='bx bxs-edit bx-tada' style=' font-size:20px;' ></i></button></a></td>
+                    <td><a onclick="enterDeleteOffers('{{offers.id}}')"><button class="btn-primaryc plr-25"><i class='bx bxs-minus-circle bx-tada' style=' font-size:20px;' ></i></button></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+        <!-- ==Ends== -->
+
+    </div>
+
+
+</section>
+<!-- ==Ends== -->
+
+{% endblock %}

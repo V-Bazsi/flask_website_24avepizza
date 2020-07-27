@@ -1,0 +1,4 @@
+*.css linguist-detectable=false
+*.html linguist-detectable=false
+*.json linguist-detectable=true
+vim: syntax=Python

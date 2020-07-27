@@ -1,0 +1,300 @@
+{% set fname = 'images/' + params['logo_pic'] %}
+<!DOCTYPE HTML>
+<html lang="en">
+
+<!--
+    Made by: 24Avepizza
+    Layout-Admin Page
+-->
+
+
+<!-- ==Header== -->
+
+<head>
+
+    <!-- ==Title and Favicons== -->
+    <title>24 Ave Pizza {{ title }}</title>
+    <link rel="shortcut icon" type="image/icon" href="{{ url_for('static',filename=fname) }}" />
+    <!-- ==Ends== -->
+
+
+    <!-- ==Desprition of the page== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="description" content="This is the offical website of 24 Ave Pizza.Inspired by authentic pizzerias in Naples, 24avepizza is keeping true to Neapolitan pizza's origins by providing products that focus on simplicity, freshness & high-quality ingredients. We differentiate ourselves from other pizza restaurants, who charge a high price to capitalize on the unique ingredients and cooking processes involved, by focusing on the quality of the ingredients and ensuring that our products are affordable for everyone.With over 400+ possible combinations, you can customize our Neapolitan pizzas and salads to your heart's desire all for one fixed price. All our pizza is made from 00 Italian Flour & no chemicals in the dough.">
+    <meta name="keywords" content="24avepizza, 24 Ave Pizza, Best pizza shop in Kolkata, Pizza, Shop, Better than Dominos">
+    <meta name="robots" content="INDEX, NOFOLLOW">
+    <!-- ==Ends== -->
+
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',filename='fonts/beyond_the_mountains-webfont.css') }}" type="text/css" />
+    <!-- ==Ends== -->
+
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.3.7/css/swiper.css" rel="stylesheet">
+    <link href="{{ url_for('static',filename='fonts/ionicons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='common/styles.css') }}" rel="stylesheet">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <!-- ==Ends== -->
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.js"></script>
+    <link href="https://rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.css" rel="stylesheet">
+
+
+</head>
+<!-- ==Ends== -->
+
+
+
+
+<!-- ==The main Body Page== -->
+
+<body>
+
+    <!-- ==The navbar== -->
+    <header>
+        <div class="container">
+            <!-- ==LOGO== -->
+            <a class="logo" href="#"><img src="{{ url_for('static',filename=fname) }}" alt="Logo" style="width: auto; height: 80px;"></a>
+            <!-- ==Ends== -->
+
+            <!-- ==Order Now Button= -->
+            <div class="right-area">
+                <h6><a class="plr-20 color-white btn-fill-primary" data-toggle="modal" data-target="#myModal">ORDER: {{params['ph_no']}}</a></h6>
+            </div>
+            <!-- ==Ends== -->
+
+            <a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
+
+
+            <!-- ==The main navigable navbar== -->
+            <ul class="main-menu font-mountainsre" id="main-menu">
+
+                <!-- ==The Dropdown menu== -->
+                <li>
+                    <ul>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ACCESSORIES </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" onclick="enterQrCode()">QR CODE</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" onclick="enterPasswordTracker()">PASSWORD TRACKER</a>
+                            <div class="dropdown-divider "></div>
+                            <a class="dropdown-item " onclick="enterFilemanager()">FILE MANAGER</a>
+                        </div>
+
+                    </ul>
+                </li>
+                <!-- ==Ends== -->
+
+                <li><a onclick="enterEditMenu()">MENU</a></li>
+
+                <!-- ==The Dropdown menu== -->
+
+                <li>
+                    <ul>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">EDIT SECTION </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" onclick="enterEditclient()">Client</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" onclick="enterAboutUsAdminin()">About Us</a>
+                            <div class="dropdown-divider "></div>
+                            <a class="dropdown-item " onclick="enterOffersDashboard()">Offers</a>
+                        </div>
+
+                    </ul>
+                </li>
+                <!-- ==Ends== -->
+
+                <!-- ==The Dropdown menu== -->
+                <li>
+                    <ul>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CLIENT PAGE </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/" target="_blank">HOME</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/about" target="_blank">ABOUT US</a>
+                            <div class="dropdown-divider "></div>
+                            <a class="dropdown-item " href="/menu" target="_blank">MENU</a>
+                            <div class="dropdown-divider "></div>
+                            <a class="dropdown-item " href="/offers" target="_blank">OFFERS</a>
+                            <div class="dropdown-divider "></div>
+                            <a class="dropdown-item " href="/contact" target="_blank">CONTACT</a>
+                        </div>
+
+                    </ul>
+                </li>
+                <!-- ==Ends== -->
+
+
+                <li><a onclick="enterAdminContactUs()">CONTACT</a></li>
+
+
+                <li><a onclick="enterLogout()">LOGOUT</a></li>
+
+            </ul>
+            <!-- ==Ends== -->
+
+
+            <div class="clearfix "></div>
+        </div>
+
+    </header>
+    <!-- ==Ends== -->
+
+
+
+    <!-- ==Modal for the order now button= -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h4 class="modal-title">Important Notice!</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Note via phone we accept order within 2km of range.</strong></p>
+                    <hr/>
+                    <a href="tel:{{params['ph_no']}}"><button type="button" class="plr-20 color-white btn-fill-primary">Call Us</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ==Ends== -->
+
+
+    {% block body %} {% endblock %}
+
+
+    <!-- ==Footer== -->
+    <footer class="pb-50 pt-70 pos-relative">
+
+        <div class="pos-top triangle-bottom "></div>
+
+        <div class="container-fluid ">
+
+            <!-- ==LOGO== -->
+            <img src="{{ url_for( 'static',filename=fname) }} " alt="Logo " style="height: 12%; width: 12%; ">
+            <!-- ==Ends== -->
+
+
+            <!-- ==The address of the shop== -->
+            <div class="pt-30 ">
+                <p class="underline-secondary "><b>Address:</b></p>
+                <p>{{params['add']}} </p>
+            </div>
+            <!-- ==Ends== -->
+
+
+            <!-- ==Phone No. of the shop== -->
+            <div class="pt-30 ">
+                <p class="underline-secondary mb-10 "><b>Phone:</b></p>
+                <a href="tel:{{params[ 'ph_no']}} ">{{params['ph_no']}}</a>
+            </div>
+            <!-- ==Ends== -->
+
+
+            <!-- ==The Email of the shop== -->
+            <div class="pt-30 ">
+                <p class="underline-secondary mb-10 "><b>Email:</b></p>
+                <a href="mailto:{{params[ 'email']}} ">{{params['email']}}</a>
+            </div>
+            <!-- ==Ends== -->
+
+
+            <!-- ===The Social Media icons== -->
+            <ul class="icon mt-30 ">
+                <li><a href="{{params[ 'insta_url']}} " target="_blank "><i class="ion-social-instagram "></i></a></li>
+                <li><a href="{{params[ 'youtube_url']}} " target="_blank "><i class="ion-social-youtube "></i></a></li>
+                <li><a href="{{params[ 'fb_url']}} " target="_blank "><i class="ion-social-facebook "></i></a></li>
+                <li><a href="{{params[ 'tweet_url']}} " target="_blank "><i class="ion-social-twitter "></i></a></li>
+            </ul>
+            <!-- ==Ends== -->
+
+            <!-- ==CopyRight Symbol== -->
+            <p class="color-light font-9 mt-50 mt-sm-30 ">
+                Copyright <i class='bx bx-copyright'></i>
+                <script>
+                    document.write(new Date().getFullYear());
+                </script> All rights reserved | This website is created with <i class="ion-heart " aria-hidden="true "></i> by <a href="https://www.24avepizza.com " target="_blank ">24 Ave Pizza</a>
+            </p>
+            <!-- ==Ends== -->
+
+
+        </div>
+    </footer>
+    <!-- ===Ends== -->
+
+
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js " integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin=" anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.js "></script>
+    <script src="{{ url_for( 'static',filename='common/scripts.js' ) }} "></script>
+    <script src="{{ url_for( 'static',filename='common/main-admin.js' ) }} "></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js " integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js " integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 " crossorigin="anonymous "></script>
+    <!-- ==Ends== -->
+
+
+
+    <!-- ==The scripts for disabling the any viewing source code function== -->
+    <script>
+        /**
+         * Disable right-click of mouse, F12 key, and save key combinations on page
+         */
+        window.onload = function() {
+            document.addEventListener("contextmenu", function(e) {
+                e.preventDefault();
+            }, false);
+            document.addEventListener("keydown", function(e) {
+                //document.onkeydown = function(e) {
+                // "I" key
+                if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                    disabledEvent(e);
+                }
+                // "J" key
+                if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+                    disabledEvent(e);
+                }
+                // "S" key + macOS
+                if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+                    disabledEvent(e);
+                }
+                // "U" key
+                if (e.ctrlKey && e.keyCode == 85) {
+                    disabledEvent(e);
+                }
+                // "F12" key
+                if (event.keyCode == 123) {
+                    disabledEvent(e);
+                }
+            }, false);
+
+            function disabledEvent(e) {
+                if (e.stopPropagation) {
+                    e.stopPropagation();
+                } else if (window.event) {
+                    window.event.cancelBubble = true;
+                }
+                e.preventDefault();
+                return false;
+            }
+        };
+    </script>
+    <!-- ==Ends== -->
+
+
+</body>
+<!-- ==Ends== -->
+
+
+</html>

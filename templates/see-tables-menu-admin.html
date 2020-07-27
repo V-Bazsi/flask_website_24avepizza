@@ -1,0 +1,104 @@
+{% extends "layout-admin.html" %} {% block body %}
+<section class="bg-5 h-500x main-slider pos-relative">
+    <div class="triangle-up pos-bottom"></div>
+    <div class="container h-100">
+        <div class="dplay-tbl">
+            <div class="dplay-tbl-cell center-text color-white pt-90">
+                <h5><b>THE BEST IN TOWN</b></h5>
+                <h2 class="mt-30 mb-15">{{title}}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="selecton brdr-b-primary mb-70">
+                    <li><a href="#" data-select="available" class="active"><b>Available Items</b></a></li>
+                    <li><a href="#" data-select="notavailable"><b>Non Available Items</b></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 food-menu available table-responsive-xl">
+                <div class="sided-90x mb-30">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Partname of the Dish</th>
+                                <th>Description</th>
+                                <th>Name of the Dish</th>
+                                <th>Image file name</th>
+                                <th>Small Size</th>
+                                <th><i class='bx bx-rupee' style="font-size:30px"></i></th>
+                                <th>Large Size</th>
+                                <th><i class='bx bx-rupee' style="font-size:30px"></i></th>
+                                <th><i class='bx bx-edit-alt bx-tada' style="font-size:30px"></i></th>
+                                <th><i class='bx bx-user-minus bx-tada' style="font-size:30px"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for menuavail in menuavail %}
+                            <tr>
+                                <td>{{menuavail.partname}}</td>
+                                <td>{{menuavail.body}}</td>
+                                <td>{{menuavail.name}}</td>
+                                <td><a href="/view-photo/{{menuavail.img_file}}" target="_blank">{{menuavail.img_file}}</a></td>
+                                <td>{{menuavail.size1}}</td>
+                                <td><i class='{{menuavail.pricesym}}'>{{menuavail.price}}</i></td>
+                                <td>{{menuavail.size2}}</td>
+                                <td><i class='{{menuavail.price1sym}}'>{{menuavail.price1}}</i></td>
+                                <td><a onclick="enterAddMenu('{{menuavail.id}}')"><button class="btn-primaryc plr-25"><i class='bx bxs-edit' style="font-size:20px"></i></button></a></td>
+                                <td><a onclick="enterDeleteMenu('{{menuavail.id}}')"><button class="btn-primaryc plr-25"><i class='bx bx-user-minus bx-tada' style="font-size:20px"></i></button></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6 food-menu notavailable table-responsive-xl">
+                <div class="sided-90x mb-30">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Partname of the Dish</th>
+                                <th>Description</th>
+                                <th>Name of the Dish</th>
+                                <th>Image file name</th>
+                                <th>Small Size</th>
+                                <th><i class='bx bx-rupee' style="font-size:30px"></i></th>
+                                <th>Large Size</th>
+                                <th><i class='bx bx-rupee' style="font-size:30px"></i></th>
+                                <th><i class='bx bx-edit-alt bx-tada' style="font-size:30px"></i></th>
+                                <th><i class='bx bx-user-minus bx-tada' style="font-size:30px"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for menuavailnot in menuavailnot %}
+                            <tr>
+                                <td>{{menuavailnot.partname}}</td>
+                                <td>{{menuavailnot.body}}</td>
+                                <td>{{menuavailnot.name}}</td>
+                                <td><a href="/view-photo/{{menuavailnot.img_file}}" target="_blank">{{menuavailnot.img_file}}</a></td>
+                                <td>{{menuavailnot.size1}}</td>
+                                <td><i class='{{menuavailnot.pricesym}}'>{{menuavailnot.price}}</i></td>
+                                <td>{{menuavailnot.size2}}</td>
+                                <td><i class='{{menuavailnot.price1sym}}'>{{menuavailnot.price1}}</i></td>
+                                <td><a onclick="enterAddMenu('{{menuavailnot.id}}')"><button class="btn-primaryc plr-25"><i class='bx bxs-edit' style="font-size:20px"></i></button></a></td>
+                                <td><a onclick="enterDeleteMenu('{{menuavailnot.id}}')"><button class="btn-primaryc plr-25"><i class='bx bx-user-minus bx-tada' style="font-size:20px"></i></button></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

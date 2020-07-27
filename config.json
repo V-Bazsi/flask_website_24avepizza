@@ -1,0 +1,20 @@
+{
+    "params": {
+        "local_uri": "mysql://root:@localhost/python_temp_website",
+        "prod_uri": "mysql://24AvePizza:=v=x]{2WEsA@24avepizza.mysql.pythonanywhere-services.com/24AvePizza$python_temp_website",
+        "insta_url": "https://www.instagram.com/24avepizza_unlimitedtopping/",
+        "tweet_url": "https://twitter.com/24AvePizza",
+        "youtube_url": "https://www.youtube.com/channel/UCCFSuKJ_-zNlKWaIS2rNlTQ",
+        "fb_url": "https://www.facebook.com/24avepizza/",
+        "ph_no": "+91 9830584076",
+        "add": "232A, Basanta Lal Saha Rd, Luv Kush Residency, Tollygunge, Kolkata, West Bengal-700053",
+        "email": "24avepizza@gmail.com",
+        "gmail-user": "24avepizzahelp@gmail.com",
+        "gmail-password": "Pizza@56",
+        "no_of_posts": 3,
+        "logo_pic": "logo.png",
+        "admin_email": "24avepizza@gmail.com",
+        "admin_password": "24ave@789",
+        "upload_location": "/home/DhruvaCuber/mysite/static/images"
+    }
+}

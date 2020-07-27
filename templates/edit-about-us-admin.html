@@ -1,0 +1,104 @@
+{% extends "layout-admin.html" %} {% block body %}
+
+<!--
+    Made by: 24Avepizza
+    Edit AboutUs Page
+-->
+
+
+<!-- ==Header Section== -->
+<section class="bg-7 h-500x main-slider pos-relative">
+    <div class="triangle-up pos-bottom"></div>
+    <div class="container h-100">
+        <div class="dplay-tbl">
+            <div class="dplay-tbl-cell center-text color-white pt-90">
+                <h5><b>Welcome you are logged in</b></h5>
+                <h3 class="mt-30 mb-15">Edit &nbspAbout us section</h3>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==Ends== -->
+
+
+<!-- ==The main body== -->
+<section class="story-area left-text center-sm-text pos-relative">
+
+
+    <!-- ==Flashed== Messages -->
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{message}}
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <!-- ==Ends= -->
+
+
+    <div class="abs-tbl bg-2 w-20 z--1 dplay-md-none"></div>
+    <div class="abs-tbr bg-3 w-20 z--1 dplay-md-none"></div>
+
+
+    <div class="container">
+
+        <!-- ==Form to edit aboutUs Section== -->
+        <form action="/edit-about" method="post">
+
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label>About us in the left side</label>
+                    <textarea cols="35" rows="8" class="form-control" placeholder="About us in the left side" name="about_left" value="">{{about.about_left}}</textarea>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>About us in the right side</label>
+                    <textarea cols="35" rows="8" type="text" id="slug" class="form-control" placeholder="About us in the right side" name="about_right" value="">{{about.about_right}}</textarea>
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group col-md-2">
+                    <label>No pizza's per day</label>
+                    <input type="number" id="pizza" class="form-control" name="pizza" value="{{about.pizza}}" placeholder="No of pizza's per day">
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label>No of pasta per day</label>
+                    <input id="pasta" type="number" class="form-control" name="pasta" placeholder="No of pasta per day" value="{{about.pasta}}">
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label>No of salad's per day</label>
+                    <input type="number" id="salad" class="form-control" placeholder="No of salad's per day" name="salad" value="{{about.salad}}">
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label>No of chefs we have</label>
+                    <input type="number" id="salad" class="form-control" placeholder="No of chefs we have" value="{{about.chef}}" name="chef">
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                    <label class="form-check-label" for="gridCheck">Check me out</label>
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn-primaryc plr-25">{{title}}</button>
+        </form>
+
+
+    </div>
+    <!-- ==End== -->
+
+</section>
+<!-- ==Ends== -->
+{% endblock %}

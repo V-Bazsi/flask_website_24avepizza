@@ -1,0 +1,77 @@
+{% extends "layout-admin.html" %} {% block body %}
+
+<!--
+    Made by: 24Avepizza
+   View QrCode Table page
+-->
+
+<!-- ==Header Section== -->
+<section class="bg-7 h-500x main-slider pos-relative">
+
+    <div class="triangle-up pos-bottom"></div>
+    <div class="container h-100">
+
+
+        <div class="dplay-tbl">
+            <div class="dplay-tbl-cell center-text color-white pt-90">
+                <h5><b>QR-Code Generator</b></h5>
+                <h3 class="mt-30 mb-15">Admin Panel</h3>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+<!-- ==Ends== -->
+
+<!-- ==The main Body== -->
+<section class="story-area left-text center-sm-text pos-relative">
+
+    <div class="abs-tbl bg-2 w-20 z--1 dplay-md-none"></div>
+    <div class="abs-tbr bg-3 w-20 z--1 dplay-md-none"></div>
+
+
+    <!-- ==The Flashed messages== -->
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{message}}
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <!-- ==Ends== -->
+
+
+    <div class="container">
+        <h3>Edit Qrcode</h3>
+        <a onclick="enterGenQrCode()"><button class="btn-primaryc plr-25">Generate a QRCODE</button></a>&nbsp&nbsp
+        <hr/>
+        <h3 class="center-sm-text pos-relative"><b>Edit  QR-CODE</b></h3>
+        <hr/>
+
+        <div class="table-responsive">
+            <!-- ==The Edit QrCode Table== -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>URL</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for qrcode in qrcode %}{% set fname = 'images/' + qrcode.qrcode %}
+                    <tr>
+                        <td>{{qrcode.title}}</td>
+                        <td><a href="{{ url_for('static',filename=fname) }}" target="_blank">{{qrcode.qrcode}}</a></td>
+                        <td><a onclick="enterDeleteQrCode('{{qrcode.id}}')"><button class="btn-primaryc plr-25">Delete <i class='bx bxs-trash' style="font-size: 22px;"></i></button></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- ==Ends==  -->
+
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
